@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NwCode Weather</string>
+
+    <string name="saint_petersburg_city">Saint-Petersburg</string>
 </resources>

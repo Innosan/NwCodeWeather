@@ -9,9 +9,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.nwcodeweather.data.viewmodels.WeatherViewModel
-import com.example.nwcodeweather.ui.screens.Home
-import com.example.nwcodeweather.ui.screens.NavGraphs
-import com.example.nwcodeweather.ui.screens.Splash
+import com.example.nwcodeweather.ui.screens.*
+import com.example.nwcodeweather.ui.screens.destinations.DetailsDestination
+import com.example.nwcodeweather.ui.screens.destinations.ForecastDestination
 import com.example.nwcodeweather.ui.screens.destinations.HomeDestination
 import com.example.nwcodeweather.ui.screens.destinations.SplashDestination
 import com.example.nwcodeweather.ui.theme.NwCodeWeatherTheme
@@ -37,12 +37,22 @@ class MainActivity : ComponentActivity() {
                         composable(HomeDestination) {
                             Home(
                                 navigator = destinationsNavigator,
-                                viewModel = weatherViewModel
+                                weatherViewModel = weatherViewModel
                             )
                         }
                         composable(SplashDestination) {
                             Splash(
                                 navigator = destinationsNavigator,
+                                weatherViewModel = weatherViewModel
+                            )
+                        }
+                        composable(DetailsDestination) {
+                            Details(
+                                weatherViewModel = weatherViewModel
+                            )
+                        }
+                        composable(ForecastDestination) {
+                            Forecast(
                                 weatherViewModel = weatherViewModel
                             )
                         }
