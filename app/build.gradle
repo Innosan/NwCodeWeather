@@ -4,6 +4,7 @@ plugins {
     id 'com.google.devtools.ksp' version '1.8.21-1.0.11'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.21'
 }
 
 android {
@@ -80,7 +81,9 @@ dependencies {
     implementation "io.ktor:ktor-client-core:$ktor_v"
     implementation "io.ktor:ktor-client-android:$ktor_v"
     implementation "io.ktor:ktor-client-serialization:$ktor_v"
+    implementation "io.ktor:ktor-client-content-negotiation:$ktor_v"
     implementation "io.ktor:ktor-client-logging:$ktor_v"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:$ktor_v"
 
     /**
      * Hilt
