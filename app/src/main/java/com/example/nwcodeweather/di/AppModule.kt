@@ -1,5 +1,6 @@
 package com.example.nwcodeweather.di
 
+import com.example.nwcodeweather.data.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,12 +22,15 @@ object AppModule {
         return HttpClient(
             Android
         ) {
-            install(Logging) {
-                level = LogLevel.ALL
-            }
             install(ContentNegotiation) {
                 json()
             }
         }
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherRepository(client: HttpClient): WeatherRepository {
+        return WeatherRepository(client)
     }
 }

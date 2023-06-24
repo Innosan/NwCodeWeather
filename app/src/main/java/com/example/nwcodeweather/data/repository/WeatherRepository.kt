@@ -14,7 +14,7 @@ class WeatherRepository(
     private val client: HttpClient
 ) {
     suspend fun getTodayWeather() : WeatherToday {
-        val response = client.get {
+        return client.get {
             url(HttpRoutes.TODAY_WEATHER)
 
             parameter("lat", City.SAINT_PETERSBURG.latitude)
@@ -22,15 +22,11 @@ class WeatherRepository(
             parameter("units", Units.METRIC.title)
             parameter("lang", Language.RUSSIAN.title)
             parameter("appid", "d9e6fe2ca9bd114df14262b014663852")
-        }.body<WeatherToday>()
-
-        println(response)
-
-        return response
+        }.body()
     }
 
     suspend fun getWeatherForecast() : WeatherForecast {
-        val response = client.get {
+        return client.get {
             url(HttpRoutes.FORECAST)
 
             parameter("lat", City.SAINT_PETERSBURG.latitude)
@@ -38,10 +34,6 @@ class WeatherRepository(
             parameter("units", Units.METRIC.title)
             parameter("lang", Language.RUSSIAN.title)
             parameter("appid", "d9e6fe2ca9bd114df14262b014663852")
-        }.body<WeatherForecast>()
-
-        println(response)
-
-        return response
+        }.body()
     }
 }
