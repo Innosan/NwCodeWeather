@@ -5,4 +5,9 @@
     <string name="home_button">На главную</string>
     <string name="details_button">Детали</string>
     <string name="forecast_button">Прогноз</string>
+    <string name="feels_like_title">Чувствуется как</string>
+    <string name="temperature_heading">Температура</string>
+    <string name="day_heading">День</string>
+    <string name="wind_heading">Ветер</string>
+    <string name="pressure_heading">Давление</string>
 </resources>

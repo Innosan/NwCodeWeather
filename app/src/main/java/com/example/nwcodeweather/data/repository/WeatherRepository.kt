@@ -20,7 +20,7 @@ class WeatherRepository(
             parameter("lat", City.SAINT_PETERSBURG.latitude)
             parameter("lon", City.SAINT_PETERSBURG.longitude)
             parameter("units", Units.METRIC.title)
-            parameter("lang", Language.RUSSIAN.title)
+            parameter("lang", Language.ENGLISH.title)
             parameter("appid", "d9e6fe2ca9bd114df14262b014663852")
         }.body()
     }
@@ -32,7 +32,7 @@ class WeatherRepository(
             parameter("lat", City.SAINT_PETERSBURG.latitude)
             parameter("lon", City.SAINT_PETERSBURG.longitude)
             parameter("units", Units.METRIC.title)
-            parameter("lang", Language.RUSSIAN.title)
+            parameter("lang", Language.ENGLISH.title)
             parameter("appid", "d9e6fe2ca9bd114df14262b014663852")
         }.body()
     }

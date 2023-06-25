@@ -8,4 +8,14 @@
     <string name="details_button">Details</string>
     <string name="forecast_button">Forecast</string>
 
+    <!-- Titles -->
+    <string name="feels_like_title">Feels like</string>
+
+    <!-- Headings -->
+    <string name="temperature_heading">Temperature</string>
+    <string name="day_heading">Day</string>
+    <string name="wind_heading">Wind</string>
+    <string name="pressure_heading">Pressure</string>
+
+
 </resources>

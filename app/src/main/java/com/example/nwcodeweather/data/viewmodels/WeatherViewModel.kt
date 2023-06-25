@@ -12,7 +12,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WeatherViewModel @Inject constructor(weatherRepository: WeatherRepository) : ViewModel() {
+class WeatherViewModel @Inject constructor(
+    private val weatherRepository: WeatherRepository
+    ) : ViewModel() {
     data class Weather(
         val today: WeatherToday?,
         val forecast: WeatherForecast?

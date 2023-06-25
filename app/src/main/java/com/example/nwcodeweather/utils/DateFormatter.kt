@@ -20,3 +20,15 @@ fun formatStringToDateTime(date: String): Pair<String, String> {
     
     return Pair(outputFormat.format(parsedDate), timeFormat.format(parsedDate))
 }
+
+/**
+ * Converts Unix time to date time and returns time in the format "HH:mm".
+ * @param unixTime The Unix time to convert.
+ * @return The time in the format "HH:mm".
+ */
+fun unixTimeToDateTime(unixTime: Long): String {
+    val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    val date = Date(unixTime * 1000L)
+
+    return timeFormat.format(date)
+}

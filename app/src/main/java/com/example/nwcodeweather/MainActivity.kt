@@ -44,7 +44,6 @@ class MainActivity : ComponentActivity() {
                         composable(SplashDestination) {
                             Splash(
                                 navigator = destinationsNavigator,
-                                weatherViewModel = weatherViewModel
                             )
                         }
                         composable(DetailsDestination) {

@@ -9,7 +9,7 @@ enum class City(
 ) {
     SAINT_PETERSBURG(
         title = R.string.saint_petersburg_city,
-        latitude = 59.57,
-        longitude = 30.19
+        latitude = 59.93,
+        longitude = 30.33
     )
 }

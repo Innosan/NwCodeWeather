@@ -46,7 +46,7 @@ fun Home(
             ) {
                 MiscWeatherInfoCard(
                     icon = R.drawable.ic_humidity,
-                    miscInfo = "${todayWeather.main.humidity} %"
+                    miscInfo = "${todayWeather.main.humidity}%"
                 )
                 MiscWeatherInfoCard(
                     icon = R.drawable.ic_wind,
