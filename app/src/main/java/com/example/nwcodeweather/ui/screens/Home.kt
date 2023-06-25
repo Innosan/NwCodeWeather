@@ -3,6 +3,7 @@ package com.example.nwcodeweather.ui.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.nwcodeweather.R
+import com.example.nwcodeweather.data.resources.WeatherResource
 import com.example.nwcodeweather.data.viewmodels.WeatherViewModel
 import com.example.nwcodeweather.ui.screens.destinations.DetailsDestination
 import com.example.nwcodeweather.ui.screens.destinations.ForecastDestination
@@ -28,47 +30,59 @@ fun Home(
     navigator: DestinationsNavigator,
     weatherViewModel: WeatherViewModel
 ) {
-    val todayWeather = weatherViewModel.weather.value.today
-
     ScreenContainer {
-        Text(
-            text = stringResource(id = R.string.saint_petersburg_city).uppercase(),
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Black,
-            fontSize = 28.sp
-        )
+        when (val weatherResource = weatherViewModel.weather.value) {
+            is WeatherResource.Success -> {
+                val todayWeather = weatherResource.data.today
 
-        if (todayWeather != null) {
-            WeatherCard(weather = todayWeather)
+                Text(
+                    text = stringResource(id = R.string.saint_petersburg_city).uppercase(),
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Black,
+                    fontSize = 28.sp
+                )
 
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                MiscWeatherInfoCard(
-                    icon = R.drawable.ic_humidity,
-                    miscInfo = "${todayWeather.main.humidity}%"
-                )
-                MiscWeatherInfoCard(
-                    icon = R.drawable.ic_wind,
-                    miscInfo = "${todayWeather.wind.speed} m/s"
-                )
-                MiscWeatherInfoCard(
-                    icon = R.drawable.ic_pressure,
-                    miscInfo = "${todayWeather.main.pressure} hPa"
-                )
+                WeatherCard(weather = todayWeather)
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    MiscWeatherInfoCard(
+                        icon = R.drawable.ic_humidity,
+                        miscInfo = "${todayWeather.main.humidity}%"
+                    )
+                    MiscWeatherInfoCard(
+                        icon = R.drawable.ic_wind,
+                        miscInfo = "${todayWeather.wind.speed} m/s"
+                    )
+                    MiscWeatherInfoCard(
+                        icon = R.drawable.ic_pressure,
+                        miscInfo = "${todayWeather.main.pressure} hPa"
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    NavigateButton(buttonText = R.string.details_button, fraction = .45f) {
+                        navigator.navigate(DetailsDestination)
+                    }
+
+                    NavigateButton(buttonText = R.string.forecast_button, fraction = .85f) {
+                        navigator.navigate(ForecastDestination)
+                    }
+                }
             }
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                NavigateButton(buttonText = R.string.details_button, fraction = .45f) {
-                    navigator.navigate(DetailsDestination)
-                }
+            is WeatherResource.Error -> {
+                val errorMessage = weatherResource.message
 
-                NavigateButton(buttonText = R.string.forecast_button, fraction = .85f) {
-                    navigator.navigate(ForecastDestination)
-                }
+                Text(text = errorMessage)
+            }
+
+            is WeatherResource.Loading -> {
+                CircularProgressIndicator()
             }
         }
     }
