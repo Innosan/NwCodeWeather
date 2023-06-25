@@ -16,6 +16,7 @@ import com.example.nwcodeweather.R
 @Composable
 fun ScreenContainer(
     contentSpacing: Int = 14,
+    showBackground: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colors = listOf(Color.Black.copy(.7f), MaterialTheme.colorScheme.background)
@@ -25,13 +26,15 @@ fun ScreenContainer(
     )
 
     Box {
-        Image(
-            painter = painterResource(id = R.drawable.bg_app),
-            contentDescription = "Screen background",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxSize(),
-        )
+        if (showBackground) {
+            Image(
+                painter = painterResource(id = R.drawable.bg_app),
+                contentDescription = "Screen background",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize(),
+            )
+        }
 
         Box(
             modifier = Modifier
@@ -47,5 +50,4 @@ fun ScreenContainer(
             }
         }
     }
-
 }

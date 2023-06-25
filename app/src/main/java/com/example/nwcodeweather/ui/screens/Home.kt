@@ -2,9 +2,10 @@ package com.example.nwcodeweather.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -17,6 +18,7 @@ import com.example.nwcodeweather.ui.screens.destinations.ForecastDestination
 import com.example.nwcodeweather.ui.shared.components.containers.MiscWeatherInfoCard
 import com.example.nwcodeweather.ui.shared.components.containers.ScreenContainer
 import com.example.nwcodeweather.ui.shared.components.containers.WeatherCard
+import com.example.nwcodeweather.ui.shared.components.service.NavigateButton
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -56,12 +58,16 @@ fun Home(
                 )
             }
 
-            Row() {
-                Button(onClick = { navigator.navigate(DetailsDestination) }) {
-                    Text(text = "Details")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                NavigateButton(buttonText = R.string.details_button, fraction = .45f) {
+                    navigator.navigate(DetailsDestination)
                 }
-                Button(onClick = { navigator.navigate(ForecastDestination) }) {
-                    Text(text = "Forecast")
+
+                NavigateButton(buttonText = R.string.forecast_button, fraction = .85f) {
+                    navigator.navigate(ForecastDestination)
                 }
             }
         }

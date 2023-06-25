@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             NwCodeWeatherTheme {
                 Surface(
@@ -53,6 +54,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(ForecastDestination) {
                             Forecast(
+                                navigator = destinationsNavigator,
                                 weatherViewModel = weatherViewModel
                             )
                         }

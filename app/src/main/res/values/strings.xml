@@ -2,4 +2,10 @@
     <string name="app_name">NwCode Weather</string>
 
     <string name="saint_petersburg_city">Saint-Petersburg</string>
+
+    <!-- Buttons -->
+    <string name="home_button">Go to Home</string>
+    <string name="details_button">Details</string>
+    <string name="forecast_button">Forecast</string>
+
 </resources>
