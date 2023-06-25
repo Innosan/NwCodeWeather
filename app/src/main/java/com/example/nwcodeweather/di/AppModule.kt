@@ -22,9 +22,6 @@ object AppModule {
         return HttpClient(
             Android
         ) {
-            install(Logging) {
-                level = LogLevel.ALL
-            }
             install(ContentNegotiation) {
                 json()
             }
